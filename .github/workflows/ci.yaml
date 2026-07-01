@@ -71,6 +71,7 @@ jobs:
             uses: actions/checkout@v4
             with:
                 token: ${{ secrets.GITHUB_TOKEN }}
+                ref: main
 
           - name: Update Tag in K8s deployment Manifest
             run: |
@@ -79,7 +80,7 @@ jobs:
             run: |
                 git config --global user.name "somnath060596"
                 git config --global user.email "somnath060596@gmail.com"
+                git pull origin main --no-rebase
                 git add kubernetes/productcatalog/deploy.yaml
                 git commit -m "[CI]: Update image tag for product-catalog deployment"
-                git pull --rebase origin HEAD:main
                 git push origin HEAD:main
