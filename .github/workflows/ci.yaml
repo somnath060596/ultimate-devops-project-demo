@@ -23,7 +23,7 @@ jobs:
             go build -o product-catalog-service main.go
         
         - name: Run Unit Tests
-          run: 
+          run: |
             cd src/product-catalog
             go test ./...
       
